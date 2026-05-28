@@ -15,7 +15,8 @@ Concise billing site for **2025–2026** high school swim lane rentals at Americ
 
 ## Live site (Vercel)
 
-**Production:** **https://affc-hs-swim-invoice.vercel.app**
+**Production:** **https://alpineswim.lukaah.com** (DNS pending — see [DNS_ALPINESWIM.md](DNS_ALPINESWIM.md))  
+**Backup:** https://affc-hs-swim-invoice.vercel.app
 
 Repo: [github.com/Tide-Trends/affc-hs-swim-invoice](https://github.com/Tide-Trends/affc-hs-swim-invoice)
 
