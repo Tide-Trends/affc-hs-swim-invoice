@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AFFC HS Swim Invoicing</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+  <header>
+    <h1>AFFC · HS Swim Invoicing</h1>
+    <p class="tag">2025–2026 · <span id="session-count">—</span> sessions</p>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>School</h2>
+        <select id="school">
+          <option value="AFHS">AFHS</option>
+          <option value="LPHS">LPHS</option>
+          <option value="PGHS">PGHS</option>
+          <option value="SKYR">SKYR</option>
+        </select>
+      </section>
+
+      <section class="panel">
+        <h2>Invoice details</h2>
+        <label>Bill to <input id="bill-to" /></label>
+        <label>Invoice # <input id="inv-num" /></label>
+        <label>Date <input type="date" id="inv-date" /></label>
+        <label>Due <input type="date" id="inv-due" /></label>
+        <label>From <input id="inv-from" value="American Fork Fitness Center" /></label>
+      </section>
+
+      <section class="panel">
+        <h2>Rates ($/hour)</h2>
+        <p class="help">Set hourly rate for each cell. Amount = rate × hours per session.</p>
+        <div id="rate-table" class="rate-table"></div>
+        <label class="check"><input type="checkbox" id="holiday-flat" /> Holiday: one flat $/session (ignore hourly)</label>
+        <div id="holiday-rates" class="rate-table compact"></div>
+        <button type="button" class="btn" id="save-rates">Save rates</button>
+        <span id="saved-msg" class="saved-msg"></span>
+      </section>
+
+      <button type="button" class="btn primary block" id="build-invoice">Build invoice</button>
+      <div class="copy-row">
+        <button type="button" class="btn" id="copy-text">Copy email text</button>
+        <button type="button" class="btn" id="copy-subject">Copy subject</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="panel summary-bar" id="summary-bar"></section>
+
+      <article class="invoice-doc" id="invoice-doc">
+        <p class="placeholder">Choose a school, set rates, then <strong>Build invoice</strong>.</p>
+      </article>
+
+      <section class="panel noteworthy-panel">
+        <h2>Noteworthy &amp; excluded</h2>
+        <div id="noteworthy"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Counts verified from 2025–2026 schedule. Rates stay in your browser only.</p>
+  </footer>
+
+  <textarea id="clipboard-buffer" class="sr-only" aria-hidden="true"></textarea>
+  <script src="app.js"></script>
+</body>
+</html>
