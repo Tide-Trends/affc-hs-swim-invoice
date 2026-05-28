@@ -13,11 +13,27 @@ Concise billing site for **2025–2026** high school swim lane rentals at Americ
 - **Noteworthy** notes (flags, excluded cells)
 - **One-click invoice** → copy email text + subject
 
-## GitHub Pages
+## Live site (Vercel)
 
-1. Create a repo and push **this folder’s contents** to the root.
-2. **Settings → Pages →** deploy from `main` (root) or use the included GitHub Action.
-3. Open `https://<user>.github.io/<repo>/`
+**Production:** [affc-hs-swim-invoice on Vercel](https://affc-hs-swim-invoice.vercel.app) *(after deploy)*
+
+Repo: [github.com/Tide-Trends/affc-hs-swim-invoice](https://github.com/Tide-Trends/affc-hs-swim-invoice)
+
+### Deploy on Vercel (recommended)
+
+1. Go to [vercel.com/new](https://vercel.com/new) → **Import** `Tide-Trends/affc-hs-swim-invoice`
+2. Framework preset: **Other** (static site, no build command)
+3. Root directory: `.` → **Deploy**
+
+Or from this folder (after `npx vercel login`):
+
+```bash
+npx vercel --prod
+```
+
+## GitHub Pages (optional)
+
+**Settings → Pages →** GitHub Actions workflow included. URL: `https://tide-trends.github.io/affc-hs-swim-invoice/`
 
 ## Local preview
 
