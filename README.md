@@ -12,6 +12,7 @@ Concise billing site for **2025–2026** high school swim lane rentals at Americ
 - **Holiday & special rentals** (break slots, Saturdays, January PM, etc.)
 - **Noteworthy** notes (flags, excluded cells)
 - **One-click invoice** → copy email text + subject
+- **School stats page** (`stats.html`) — full breakdown by weekday, time slot, SC/LC, day group, monthly volume, holiday rentals, CSV export, and **Excel verification** banner
 
 ## Live site (Vercel)
 
@@ -56,10 +57,15 @@ Requires the schedule file path in `scripts/build-data.py` (default: Downloads f
 
 | File | Purpose |
 |------|---------|
-| `index.html` | App shell |
-| `app.css` | Styles |
+| `index.html` | Billing / invoice UI |
+| `stats.html` | School statistics & verification |
+| `app.css` | Shared styles |
+| `stats.css` | Stats page layout |
 | `app.js` | Logic, rates, invoice |
+| `js/data-core.js` | Shared data helpers |
+| `js/stats.js` | Stats page logic |
 | `data/sessions.json` | All sessions (committed) |
+| `data/verification.json` | Excel cross-check counts |
 | `scripts/build-data.py` | Rebuild JSON from Excel |
 
 Rates are stored in **localStorage** only (your browser).

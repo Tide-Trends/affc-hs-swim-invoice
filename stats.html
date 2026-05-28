@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School Stats — AFFC HS Swim</title>
+  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="stats.css" />
+</head>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <div>
+        <h1>AFFC · HS Swim Statistics</h1>
+        <p class="tag">2025–2026 lane usage · verified against source schedule</p>
+      </div>
+      <nav>
+        <a href="index.html">Billing / Invoice</a>
+        <a href="stats.html" class="active">School Stats</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="stats-main">
+    <section id="verify-banner" class="verify-banner"></section>
+
+    <div class="stats-toolbar panel">
+      <label>School
+        <select id="filter-school">
+          <option value="ALL">All schools</option>
+          <option value="AFHS">AFHS</option>
+          <option value="LPHS">LPHS</option>
+          <option value="PGHS">PGHS</option>
+          <option value="SKYR">SKYR</option>
+        </select>
+      </label>
+      <label>Section
+        <select id="filter-section">
+          <option value="ALL">All sections</option>
+          <option value="Regular">Regular (SC/LC grid)</option>
+          <option value="Holiday & Special">Holiday &amp; special only</option>
+        </select>
+      </label>
+      <input type="search" id="filter-search" placeholder="Search dates, slots, flags…" />
+      <button type="button" class="btn" id="export-csv">Export CSV</button>
+      <button type="button" class="btn" id="print-stats">Print</button>
+    </div>
+
+    <div id="kpi-row" class="kpi-row"></div>
+
+    <div class="stats-grid">
+      <section class="panel stat-card wide">
+        <h2>Billing matrix — Course × day group × AM/PM</h2>
+        <p class="help">Primary split used for invoices. Click a cell to see dates below.</p>
+        <div id="matrix-table"></div>
+      </section>
+
+      <section class="panel stat-card">
+        <h2>By calendar weekday</h2>
+        <p class="help">Mon, Tue, Wed… with short vs long course and AM/PM.</p>
+        <div id="weekday-table"></div>
+      </section>
+
+      <section class="panel stat-card">
+        <h2>By time slot</h2>
+        <div id="slot-table"></div>
+      </section>
+
+      <section class="panel stat-card wide">
+        <h2>Monthly volume</h2>
+        <div id="month-chart" class="bar-chart"></div>
+      </section>
+
+      <section class="panel stat-card wide">
+        <h2>Holiday &amp; special rentals</h2>
+        <div id="holiday-table"></div>
+      </section>
+
+      <section class="panel stat-card wide">
+        <h2>Per-school summary</h2>
+        <div id="school-compare"></div>
+      </section>
+
+      <section class="panel stat-card wide">
+        <h2 id="detail-title">Session detail</h2>
+        <p class="help" id="detail-hint">All sessions matching filters. Click a matrix cell to filter.</p>
+        <div class="table-scroll">
+          <table class="data-table" id="detail-table">
+            <thead>
+              <tr>
+                <th>Date</th><th>Day</th><th>School</th><th>Course</th>
+                <th>Day group</th><th>AM/PM</th><th>Section</th>
+                <th>Slot</th><th>Time</th><th>Hrs</th><th>Flags</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel stat-card wide">
+        <h2>Data authenticity</h2>
+        <div id="auth-panel"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Source: <span id="source-label">—</span></p>
+  </footer>
+
+  <script type="module" src="js/stats.js"></script>
+</body>
+</html>

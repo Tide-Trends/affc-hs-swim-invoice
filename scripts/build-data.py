@@ -151,7 +151,51 @@ def main():
     path = ROOT / "data" / "sessions.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(out, indent=2), encoding="utf-8")
+
+    def bump(tree, *keys):
+        t = tree
+        for k in keys:
+            t = t.setdefault(k, {"count": 0, "hours": 0.0})
+        t["count"] += 1
+        return t
+
+    verify = {
+        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "source_file": str(XLSX),
+        "sheet": SHEET,
+        "total_sessions": len(sessions),
+        "excluded_count": len(excluded),
+        "excluded_cells": excluded,
+        "by_school": {},
+        "by_school_course_daygroup_ampm": {},
+        "by_school_weekday_course_ampm": {},
+        "by_school_section": {},
+        "session_keys": [],
+    }
+    for s in sessions:
+        sch = s["school"]
+        verify["by_school"][sch] = verify["by_school"].get(sch, 0) + 1
+        verify["by_school_section"].setdefault(sch, {})
+        verify["by_school_section"][sch][s["section"]] = (
+            verify["by_school_section"][sch].get(s["section"], 0) + 1
+        )
+        k1 = f"{sch}|{s['course']}|{s['day_group']}|{s['am_pm']}"
+        verify["by_school_course_daygroup_ampm"][k1] = (
+            verify["by_school_course_daygroup_ampm"].get(k1, 0) + 1
+        )
+        k2 = f"{sch}|{s['weekday']}|{s['course']}|{s['am_pm']}"
+        verify["by_school_weekday_course_ampm"][k2] = (
+            verify["by_school_weekday_course_ampm"].get(k2, 0) + 1
+        )
+        verify["session_keys"].append(
+            f"{s['date']}|{s['school']}|{s['slot']}|{s['time']}"
+        )
+    verify["session_keys"].sort()
+
+    vpath = ROOT / "data" / "verification.json"
+    vpath.write_text(json.dumps(verify, indent=2), encoding="utf-8")
     print(f"OK: {len(sessions)} sessions, {len(excluded)} excluded -> {path}")
+    print(f"    verification -> {vpath}")
 
 
 if __name__ == "__main__":

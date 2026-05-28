@@ -1,0 +1,165 @@
+.site-nav { padding: 0.85rem 1.5rem; }
+.nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-nav nav { display: flex; gap: 0.5rem; }
+.site-nav nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.site-nav nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.site-nav nav a.active { background: #fff; color: var(--brand); }
+
+.stats-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 2rem;
+}
+
+.verify-banner {
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.verify-banner.pass {
+  background: #e8f5ee;
+  border: 1px solid #1a6b4a;
+  color: #0d4a2e;
+}
+.verify-banner.fail {
+  background: #fde8e8;
+  border: 1px solid #c53030;
+  color: #742a2a;
+}
+
+.stats-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+.stats-toolbar label { margin: 0; font-size: 0.8rem; }
+.stats-toolbar input[type="search"] {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+}
+.kpi .label { font-size: 0.72rem; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.kpi .value { font-size: 1.5rem; font-weight: 700; color: var(--brand); }
+.kpi .sub { font-size: 0.8rem; color: var(--muted); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.stat-card.wide { grid-column: 1 / -1; }
+
+@media (max-width: 900px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+.matrix-wrap { overflow-x: auto; }
+table.matrix { border-collapse: collapse; font-size: 0.8rem; width: 100%; }
+table.matrix th, table.matrix td {
+  border: 1px solid var(--line);
+  padding: 0.35rem 0.5rem;
+  text-align: center;
+  min-width: 48px;
+}
+table.matrix th { background: #eef2f6; font-weight: 600; }
+table.matrix td.cell-data {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+table.matrix td.cell-data:hover { background: var(--brand-light); }
+table.matrix td.cell-data.has-data { font-weight: 600; }
+table.matrix td.sc { background: #eef8f2; }
+table.matrix td.lc { background: #fef6ee; }
+table.matrix td.selected { outline: 2px solid var(--brand); }
+table.matrix .zero { color: #ccc; }
+
+.bar-chart { display: flex; flex-direction: column; gap: 0.35rem; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 48px;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+.bar-track {
+  background: #eef2f6;
+  border-radius: 4px;
+  height: 22px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 4px;
+  min-width: 2px;
+}
+.bar-fill.sc { background: var(--sc); }
+.bar-fill.lc { background: var(--lc); }
+.bar-fill.hol { background: var(--hol); }
+
+.table-scroll { max-height: 420px; overflow: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+.data-table th, .data-table td {
+  border: 1px solid var(--line);
+  padding: 0.3rem 0.45rem;
+  text-align: left;
+}
+.data-table th {
+  position: sticky;
+  top: 0;
+  background: #eef2f6;
+  z-index: 1;
+}
+.data-table tr:nth-child(even) { background: #fafbfc; }
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+.auth-grid ul { margin: 0.25rem 0; padding-left: 1.2rem; }
+
+.school-compare table { width: 100%; font-size: 0.85rem; }
+.school-compare th, .school-compare td {
+  border: 1px solid var(--line);
+  padding: 0.4rem 0.6rem;
+}
+
+@media print {
+  .stats-toolbar, .site-nav nav, footer { display: none; }
+  .table-scroll { max-height: none; }
+}

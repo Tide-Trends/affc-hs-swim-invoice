@@ -18,13 +18,35 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); }
 
-header {
+header, header.site-nav {
   background: var(--brand);
   color: #fff;
   padding: 1rem 1.5rem;
 }
 header h1 { margin: 0; font-size: 1.25rem; font-weight: 600; }
 .tag { margin: 0.25rem 0 0; opacity: 0.9; font-size: 0.85rem; }
+
+.site-nav { padding: 0.85rem 1.5rem; }
+.nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-nav nav { display: flex; gap: 0.5rem; }
+.site-nav nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.site-nav nav a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.site-nav nav a.active { background: #fff; color: var(--brand); }
 
 .layout {
   display: grid;
