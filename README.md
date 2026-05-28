@@ -15,7 +15,7 @@ Concise billing site for **2025–2026** high school swim lane rentals at Americ
 
 ## Live site (Vercel)
 
-**Production:** [affc-hs-swim-invoice on Vercel](https://affc-hs-swim-invoice.vercel.app) *(after deploy)*
+**Production:** **https://affc-hs-swim-invoice.vercel.app**
 
 Repo: [github.com/Tide-Trends/affc-hs-swim-invoice](https://github.com/Tide-Trends/affc-hs-swim-invoice)
 

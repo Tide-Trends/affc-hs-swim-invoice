@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "affc-hs-swim-invoice",
   "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
